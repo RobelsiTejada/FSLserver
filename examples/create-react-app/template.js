@@ -1,14 +1,10 @@
 import Helmet from "react-helmet";
-
 export default ({template, html, error}) => {
-
     //@see https://github.com/nfl/react-helmet#server-usage
     const head = Helmet.renderStatic();
-
     const errorHtml = error
         ? `<div id="server-error"><h1>Server Error</h1><pre>${error.stack || error}</pre></div>`
         : '';
-
     return template
         .replace(
             `<div id="root"></div>`,
@@ -22,5 +18,4 @@ export default ({template, html, error}) => {
             /<html>/g,
             '<html ' + head.htmlAttributes.toString() + '>'
         );
-
 };

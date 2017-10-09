@@ -1,23 +1,17 @@
 import React, {Component} from "react";
-import {connect} from "react-redux"; // this is optional
+import {Link} from "react-router-dom";
+import Helmet from "./Helmet";
 import {withWrapper} from "create-react-server/wrapper";
-
-export class App extends Component {
-
-    static async getInitialProps({location: {pathname, query}, params, store}) {
-        await store.dispatch(barAction()); // this is optional
-        return {custom: 'custom'};
-    };
-
+export class Page extends Component {
     render() {
-        const {foo, bar, custom, initialError} = this.props;
-        if (initialError) return <pre>Initial Error: {initialError.stack}</pre>;
         return (
-            <div>Foo {foo}, Bar {bar}, Custom {custom}</div>
+            <div>
+                <Helmet title='Page'/>
+                <h1>Page</h1>
+                <hr/>
+                <Link to="/">Open index</Link>
+            </div>
         );
     }
-
 }
-
-App = connect(state => state)(App); // this is optional
-export default withWrapper(App); // here we connect to WrapperProvider
+export default withWrapper(Page);

@@ -2,11 +2,9 @@ import {applyMiddleware, compose, createStore, combineReducers} from "redux";
 import {createLogger} from "redux-logger";
 import thunk from "redux-thunk";
 import promiseMiddleware from "redux-promise-middleware";
-
 function foo(state = 'initial', {type, payload}) {
     return state;
 }
-
 function bar(state = 'initial', {type, payload}) {
     switch (type) {
         case 'BAR_SUCCESS':
@@ -17,7 +15,6 @@ function bar(state = 'initial', {type, payload}) {
             return state;
     }
 }
-
 export function barAction() {
     return {
         type: 'BAR',
@@ -28,30 +25,23 @@ export function barAction() {
         })
     }
 }
-
 const isBrowser = (typeof window !== 'undefined');
-
 export default function configureStore(initialState, {req, res} = {}) {
-
     if (!initialState && req) {
         initialState = {foo: 'server'};
     }
-
     console.log('Store created with initial state', initialState);
-
     let middlewares = [
         promiseMiddleware({
             promiseTypeSuffixes: ['PENDING', 'SUCCESS', 'ERROR']
         }),
         thunk
     ];
-
     if (isBrowser) {
         middlewares.push(createLogger({
             collapsed: true
         }));
     }
-
     return createStore(
         combineReducers({
             foo,
@@ -63,5 +53,4 @@ export default function configureStore(initialState, {req, res} = {}) {
             isBrowser && window['devToolsExtension'] ? window['devToolsExtension']() : f => f
         )
     );
-
 }
