@@ -1,15 +1,12 @@
 import React from "react";
-import {Provider} from "react-redux";
-import {Route, Switch} from "react-router";
-import {WrapperProvider} from "create-react-server/wrapper";
-import NotFound from "./components/NotFound";
-import App from "./components/App";
-import Page from "./components/Page";
-import createStore from "./store";
+import {Route, IndexRoute} from "react-router";
+import NotFound from './NotFound';
+import Page from './Page';
+import IndexPage from './IndexPage';
 
-export default ({state, props, req}) => {
+export default ({state, props, req, res}) => {
 
-    if (!state && req) {
+    if (!state && !!req) { // this means function is called on server
         state = {
             'foo': req.url + ':' + Date.now()
         };
@@ -19,7 +16,7 @@ export default ({state, props, req}) => {
         <Provider store={createStore(state)}>
             <WrapperProvider initialProps={props}>
                 <Switch>
-                    <Route exact path="/" component={App}/>
+                    <Route exact path="/" component={IndexPage}/>
                     <Route path="/page" component={Page}/>
                     <Route component={NotFound}/>
                 </Switch>

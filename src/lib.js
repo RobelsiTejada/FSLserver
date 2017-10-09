@@ -5,7 +5,6 @@ var _extends = Object.assign || function(target) {
         }
         return target;
     };
-
 function _objectWithoutProperties(obj, keys) {
     var target = {};
     for (var i in obj) {
@@ -15,7 +14,5 @@ function _objectWithoutProperties(obj, keys) {
     }
     return target;
 }
-
-
 exports.extends = _extends;
 exports.objectWithoutProperties = _objectWithoutProperties;
