@@ -6,9 +6,9 @@ cache:
   - node_modules
 deploy:
   provider: npm
-  email: kirill.konshin@gmail.com
+  email:
   api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
     tags: true
-    repo: kirill-konshin/create-react-server
+    repo:

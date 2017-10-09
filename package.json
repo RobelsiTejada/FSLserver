@@ -47,18 +47,5 @@
     "react": "*",
     "react-dom": "*",
     "react-router-dom": ">=4.0.0"
-  },
-  "author": "Kirill Konshin",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/kirill-konshin/create-react-server.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kirill-konshin/create-react-server/issues"
-  },
-  "homepage": "https://github.com/kirill-konshin/create-react-server",
-  "engines": {
-    "node": ">=0.10.36"
-  },
-  "license": "MIT"
+  }
 }
